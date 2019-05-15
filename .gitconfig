@@ -1,0 +1,46 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = <name>
+	email = <email address>
+
+[commit]
+    template = ~/.gitmessage
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+
+[color "branch"]
+    current = red reverse
+    local = blue
+    remote = green
+
+[color "diff"]
+    meta = yellow
+    frag = magenta
+    old = red bold
+    new = green
+    plain = white
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[alias]
+    logs = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    logl = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    cleanup = "!git checkout master && git branch --merged | grep  -v '\\*\\|master\\|dev' | xargs -n 1 git branch -d"
+    amend = "!git add . && git commit --amend --no-edit"
+    changepw = "!git config --global credential.helper osxkeychain"
+    fire = "!git checkout -b garrett_fire_branch && touch firedoc && git add firedoc && git commit -am 'FIRE!!!' && git push -f origin garrett_fire_branch"
+    diffl = "!f() { git diff --name-only \"$1\"; }; f "
+
+[push]
+	default = current
+
+# If looking for where git prepare hook is, look in <project>/.git/hooks
+[credential]
+	helper = osxkeychain
